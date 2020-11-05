@@ -40,9 +40,14 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    if event.massage.text == "ありがとう":
+        reply_message = "どういたしまして。"
+    else:
+        reply_massage = f"You said {event.message.text}"
+    
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=f”あなたは、{event.message.text}と言いました。"))
+        TextSendMessage(text=reply_massage))
 
 
 if __name__ == "__main__":
